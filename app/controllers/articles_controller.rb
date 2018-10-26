@@ -22,13 +22,23 @@ def show
 	@article = Article.find(params[:id])
 end
 
+def destroy
+	@article = Article.find(params[:id])
+	@article.destroy
+	flash[:notice] = "Article was successfully deleted"
+	redirect_to articles_path
+end
+
 def edit
 	@article = Article.find(params[:id])
 end
 
+#def update defines what to do with a request to update an article 
 def update 
 	@article = Article.find(params[:id])
-	if @article.update(article_params) #not the same update method we just created
+#@article.update updates the model
+	if @article.update(article_params) 
+
 		flash[:notice] = "Article was successfully updated"
 		redirect_to article_path(@article)
 	else
