@@ -7,4 +7,6 @@ get 'pages/about', to: 'pages#about'
 
 resources :articles
 
+resources :categories, except: [:destroy] 
+
 end
